@@ -1,0 +1,10 @@
+FROM node:22.17.1-alpine
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 3001
+CMD ["npm", "start"]

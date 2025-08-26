@@ -1,0 +1,43 @@
+{
+  "name": "seazone-tech-front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "build:prod": "NODE_ENV=production next build",
+    "start": "next start",
+    "start:prod": "NODE_ENV=production next start",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "type-check": "tsc --noEmit",
+    "docker:build": "docker build -t seazone-frontend .",
+    "docker:build:dev": "docker build --target development -t seazone-frontend:dev .",
+    "docker:build:prod": "docker build --target runner -t seazone-frontend:prod .",
+    "docker:run:dev": "docker run -p 3000:3000 seazone-frontend:dev",
+    "docker:run:prod": "docker run -p 3000:3000 seazone-frontend:prod"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.542.0",
+    "next": "15.5.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwind": "^4.0.0",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.1",
+    "tailwindcss": "^4",
+    "tw-animate-css": "^1.3.7",
+    "typescript": "^5"
+  }
+}

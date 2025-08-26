@@ -1,0 +1,65 @@
+services:
+  frontend:
+    build:
+      context: ./seazone-tech-front
+      dockerfile: Dockerfile
+      target: development
+    develop:
+      watch:
+        - action: sync
+          path: ./seazone-tech-front/src
+          target: /app/src
+        - action: rebuild
+          path: ./seazone-tech-front/package.json
+    container_name: seazone-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./seazone-tech-front:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+    depends_on:
+      - backend
+    networks:
+      - seazone-network
+  frontend-prod:
+    build:
+      context: ./seazone-tech-front
+      dockerfile: Dockerfile
+      target: runner
+    container_name: seazone-frontend-prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    depends_on:
+      - backend
+    networks:
+      - seazone-network
+    profiles:
+      - production
+  backend:
+    build:
+      context: ./seazone-tech-serverside
+      dockerfile: Dockerfile
+    container_name: seazone-backend
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./seazone-tech-serverside:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - seazone-network
+
+networks:
+  seazone-network:
+    driver: bridge
+
+volumes:
+  node_modules_frontend:
+  node_modules_backend:
