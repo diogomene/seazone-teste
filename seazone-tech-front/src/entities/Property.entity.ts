@@ -1,7 +1,9 @@
+
+
 export interface Property {
   id: number
   title: string
-  type: string
+  type: Type
   location: Location
   pricePerNight: number
   maxGuests: number
@@ -11,10 +13,14 @@ export interface Property {
   isAvailable: boolean
   rating: number
   reviewsCount: number
-  amenities: string[]
+  amenities: Amenities[]
   images: string[]
   host: Host
 }
+
+export type Type = "Apartamento" | "Casa" | "Studio" | "Cobertura" | "Chalé" | "Loft" | "Sítio"
+
+export type Amenities = 'aquecimento' | 'lavadora' | 'churrasqueira' | 'jacuzzi' | 'smart-tv' | 'wifi' | 'vista-mar' | 'cozinha-equipada' | 'pet-friendly' | 'piscina' | 'lareira' | 'varanda' | 'academia' | 'ar-condicionado' | 'garagem'
 
 export interface Location {
   city: string
