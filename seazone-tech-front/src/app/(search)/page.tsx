@@ -22,7 +22,7 @@ export default function SearchPage() {
   return (
     <div className="flex flex-col items-center min-h-screen p-8 bg-gray-50">
       <div className="w-full max-w-4xl space-y-8">
-        <div className="flex justify-center align-center">
+        <div className="flex justify-center align-center" id="search-header">
           <div className="space-y-4 w-3xl">
             <SearchInput onSearch={handleSearch} />
             <div className="flex justify-end pr-2">
