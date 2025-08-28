@@ -1,24 +1,60 @@
 "use client";
 
-import { Label } from "@radix-ui/react-label";
-import { Input } from "../ui/input";
+import { useState } from "react";
+import { Location } from "@/entities/Property.entity";
+import { SearchFilters, SearchProps } from "@/types/search";
+import { LocationSelector } from "./LocationSelector";
+import { GuestRoomSelector } from "./GuestRoomSelector";
+import { SearchButton } from "./SearchButton";
 
-export function SearchInput() {
+export function SearchInput({ onSearch, initialFilters }: SearchProps) {
+  const [filters, setFilters] = useState<SearchFilters>({
+    location: null,
+    guests: 0,
+    bedrooms: 0,
+    ...initialFilters,
+  });
+
+  const handleLocationSelect = (location: Location) => {
+    setFilters(prev => ({ ...prev, location }));
+  };
+
+  const handleGuestChange = (type: 'guests' | 'bedrooms', action: 'increment' | 'decrement') => {
+    setFilters(prev => ({
+      ...prev,
+      [type]: action === 'increment' 
+        ? prev[type] + 1 
+        : Math.max(0, prev[type] - 1)
+    }));
+  };
+
+  const handleSearch = () => {
+    onSearch?.(filters);
+  };
+
   return (
-    <div className="w-3xl">
-      <div className="flex flex-row">
-        <Label htmlFor="search">
-          <span className="text-neutral-500 text-2xl">Que lugar </span>
-          <span className="text-orange-500 font-bold text-2xl">
-            você está buscando hoje?
-          </span>
-        </Label>
+    <div className="w-full max-w-4xl mx-auto">
+      <div className="flex flex-col items-center space-y-4">
+        <h1 className="text-3xl font-bold text-center">
+          <span className="text-neutral-700">Encontre o seu </span>
+          <span className="text-orange-500">próximo destino</span>
+        </h1>
+        
+        <div className="flex items-center bg-white border border-gray-300 rounded-full shadow-lg overflow-hidden w-full max-w-3xl">
+          <LocationSelector 
+            selectedLocation={filters.location}
+            onLocationSelect={handleLocationSelect}
+          />
+          
+          <GuestRoomSelector
+            guests={filters.guests}
+            bedrooms={filters.bedrooms}
+            onGuestChange={handleGuestChange}
+          />
+          
+          <SearchButton onSearch={handleSearch} />
+        </div>
       </div>
-      <Input
-        id="search"
-        placeholder="O lugar em que eu quero estar é..."
-        className="border border-gray-400 mt-3.5"
-      />
     </div>
   );
 }
