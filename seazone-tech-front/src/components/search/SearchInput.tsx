@@ -36,10 +36,6 @@ export function SearchInput({ onSearch, initialFilters }: SearchProps) {
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="flex flex-col items-center space-y-4">
-        <h1 className="text-3xl font-bold text-center">
-          <span className="text-neutral-700">Encontre o seu </span>
-          <span className="text-orange-500">próximo destino</span>
-        </h1>
         
         <div className="flex items-center bg-white border border-gray-300 rounded-full shadow-lg overflow-hidden w-full max-w-3xl">
           <LocationSelector 
