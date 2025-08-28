@@ -27,6 +27,7 @@ export class PropertyService implements PropertyDAO {
 
   async searchProperties(filter: PropertyFilter): Promise<Property[]> {
     const query = await filter.toQuery();
+    console.log("Solicitada pesquisa", query, this.getBaseUrl);
     const res = await fetch(`${this.getBaseUrl}?${query}`);
     const data = await res.json();
     return data;
