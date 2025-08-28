@@ -111,3 +111,9 @@ Conforme apresentado na seção anterior, algumas dívidas técnicas foram assum
 - Adicionar *fitness functions* para verificar arquitetura
 - Adicionar testes unitários em unidades lógicas
 - Adicionar testes end-to-end em casos de uso crítico (no caso, apenas pesquisar e realizar reserva - com variações de caminho feliz e caminho com exceções)
+- Adicionar elementos visuais como mapas para seleção de localização para melhor UX.
+- Melhorar icon e manifest da aplicação
+- Adicionar uma identidade visual mais clara (header/footer)
+- Aproveitar melhor caching e server components do Next
+
+Vale dizer, também, que o máximo de experiência com o framework `Next` que tive foram algumas brincadeiras. Fazer algo mais "a sério" em pouco tempo foi desafiador. Com mais um ou dois dias para estudar a ferramenta, definitivamente o resultado seria mais robusto e agradável.
