@@ -6,23 +6,21 @@ import { Type } from "@/entities/Property.entity";
 import { propertyTypes } from "./PropertyTypeItens";
 
 interface PropertyTypeSelectorProps {
-  selectedTypes?: Type[];
-  onTypesChange?: (types: Type[]) => void;
+  selectedType?: Type;
+  onTypeChange?: (type: Type | undefined) => void;
 }
 
 export function PropertyTypeSelector({ 
-  selectedTypes = [], 
-  onTypesChange 
+  selectedType, 
+  onTypeChange 
 }: PropertyTypeSelectorProps) {
-  const [internalSelectedTypes, setInternalSelectedTypes] = useState<Type[]>(selectedTypes);
+  const [internalSelectedType, setInternalSelectedType] = useState<Type | undefined>(selectedType);
 
   const handleTypeToggle = (type: Type) => {
-    const newSelectedTypes = internalSelectedTypes.includes(type)
-      ? internalSelectedTypes.filter(t => t !== type)
-      : [...internalSelectedTypes, type];
+    const newSelectedType = internalSelectedType === type ? undefined : type;
     
-    setInternalSelectedTypes(newSelectedTypes);
-    onTypesChange?.(newSelectedTypes);
+    setInternalSelectedType(newSelectedType);
+    onTypeChange?.(newSelectedType);
   };
 
   return (
@@ -37,7 +35,7 @@ export function PropertyTypeSelector({
             key={type}
             variant="outline"
             size="default"
-            pressed={internalSelectedTypes.includes(type)}
+            pressed={internalSelectedType === type}
             onPressedChange={() => handleTypeToggle(type)}
             className="flex flex-col items-center justify-center p-4 h-20 min-w-[120px] data-[state=on]:bg-orange-100 data-[state=on]:text-orange-700 data-[state=on]:border-orange-300 hover:bg-orange-50"
           >
