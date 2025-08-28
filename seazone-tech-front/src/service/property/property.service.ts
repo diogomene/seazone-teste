@@ -3,8 +3,8 @@ import { PropertyDAO } from "./property.dao";
 import { PropertyFilter } from "./propertyFilter";
 
 export class PropertyService implements PropertyDAO {
-  getBaseUrl = `${process.env.API_URL}/properties`;
-  bookBaseUrl = `${process.env.API_URL}/bookings`;
+  getBaseUrl = `${process.env.NEXT_PUBLIC_API_URL}/properties`;
+  bookBaseUrl = `${process.env.NEXT_PUBLIC_API_URL}/bookings`;
   async getAllProperties(): Promise<Property[]> {
     const res = await fetch(this.getBaseUrl);
     const data = await res.json();
