@@ -7,7 +7,6 @@ import { PropertyService } from "@/service/property/property.service";
 import { PropertyFilter } from "@/service/property/propertyFilter";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
-import { CircleX } from "lucide-react";
 
 export interface PropertiesListProps {
   propertyFilter: PropertyFilter;
@@ -60,9 +59,7 @@ export function PropertiesList({
   }
 
   if (error) {
-    toast(error, {
-      icon: <CircleX color="red"/>
-    })
+    toast.error(error)
   }
 
   if (properties.length === 0) {
@@ -81,6 +78,7 @@ export function PropertiesList({
       {properties.map((property) => (
         <PropertyCard
           key={property.id}
+          id={property.id}
           title={property.title}
           location={property.location}
           pricePerNight={property.pricePerNight}
