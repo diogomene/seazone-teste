@@ -6,6 +6,8 @@ import { PropertyCard } from "@/components/property/PropertyCard";
 import { PropertyService } from "@/service/property/property.service";
 import { PropertyFilter } from "@/service/property/propertyFilter";
 import { Skeleton } from "@/components/ui/skeleton";
+import { toast } from "sonner";
+import { CircleX } from "lucide-react";
 
 export interface PropertiesListProps {
   propertyFilter: PropertyFilter;
@@ -32,7 +34,8 @@ export function PropertiesList({
       } catch (err) {
         console.error("Erro ao buscar propriedades:", err);
         setError(
-          err instanceof Error ? err.message : "Erro ao carregar propriedades"
+          // err instanceof Error ? err.message : "Erro ao carregar propriedades"
+          "Erro ao carregar propriedades"
         );
       } finally {
         setLoading(false);
@@ -57,6 +60,9 @@ export function PropertiesList({
   }
 
   if (error) {
+    toast(error, {
+      icon: <CircleX color="red"/>
+    })
   }
 
   if (properties.length === 0) {
