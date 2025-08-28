@@ -15,6 +15,8 @@ Os serviçoes iniciam por padrão nas portas:
 - 3001 (back-end)
 - 3000 (front-end)
 
+Caso isso seja alterado, é necessário tomar atenção para atualizar as portas em todas as suas ocorrências (como em arquivos `.env*`)
+
 ## NodeJS
 
 1. Acessar pasta do serviço de back (a partir da raiz do projeto):
@@ -23,7 +25,13 @@ Os serviçoes iniciam por padrão nas portas:
 cd seazone-tech-serverside
 ```
 
-2. Inicializar serviço em modo Dev:
+2. Instalar dependências:
+
+```
+npm i
+```
+
+3. Inicializar serviço em modo Dev:
 
 ```
 npm start
@@ -31,18 +39,24 @@ npm start
 npm run start
 ```
 
-3. Acessar pasta do serviço de front (a partir da raiz do projeto):
+4. Acessar pasta do serviço de front (a partir da raiz do projeto):
 
 ```
 cd seazone-tech-front
 ```
 
-4. Criar arquivo `.env` a partir de `.env.example`
+5. Criar arquivo `.env` a partir de `.env.example`
 ```
 cp ./.env.example ./.env
 ```
 
-5. Inicializar serviço em modo Dev:
+6. Instalar dependências:
+
+```
+npm i
+```
+
+7. Inicializar serviço em modo Dev:
 
 ```
 npm run dev
@@ -115,5 +129,6 @@ Conforme apresentado na seção anterior, algumas dívidas técnicas foram assum
 - Melhorar icon e manifest da aplicação
 - Adicionar uma identidade visual mais clara (header/footer)
 - Aproveitar melhor caching e server components do Next
+- Corrigir erros do docker em ambiente de produção do serviço de front (errinho com configuração de `compose` e `.env`)
 
 Vale dizer, também, que o máximo de experiência com o framework `Next` que tive foram algumas brincadeiras. Fazer algo mais "a sério" em pouco tempo foi desafiador. Com mais um ou dois dias para estudar a ferramenta, definitivamente o resultado seria mais robusto e agradável.
