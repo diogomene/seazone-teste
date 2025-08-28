@@ -4,6 +4,7 @@ export interface SearchFilters {
   location: Location | null;
   guests: number;
   bedrooms: number;
+  priceRange?: [number, number];
 }
 
 export interface SearchProps {

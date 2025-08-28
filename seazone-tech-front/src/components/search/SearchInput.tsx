@@ -12,6 +12,7 @@ export function SearchInput({ onSearch, initialFilters }: SearchProps) {
     location: null,
     guests: 0,
     bedrooms: 0,
+    priceRange: [50, 500],
     ...initialFilters,
   });
 
